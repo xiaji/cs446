@@ -1,5 +1,5 @@
 cs446 
 =====
 
-CSCI 446 Rroject Assignment Directory
+CSCI 446 Project Assignment Directory
 
