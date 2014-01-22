@@ -37,7 +37,7 @@ class Player
     # Whether need to turn around
     turn_around(warrior)
 
-    @warrior_health = warrior.health
+    @health = warrior.health
 
   end
 
@@ -127,7 +127,7 @@ class Player
   end
 
   def rest(warrior)
-    rest_start(warrior) if (warrior.health < Minhealth) and not (warrior.health < @warrior_health) and not (@start_rest)
+    rest_start(warrior) if (warrior.health < Minhealth) and not (warrior.health < @health) and not (@start_rest)
   end
 
   def rest_start(warrior)
