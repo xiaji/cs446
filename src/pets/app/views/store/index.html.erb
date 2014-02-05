@@ -1,0 +1,13 @@
+<% if notice %>
+<p id="notice"><%= notice %></p> <% end %>
+<h1>Your Cats Catalog</h1>
+<% @cats.each do |cat| %>
+<div class="entry">
+<%= image_tag(cat.image_url) %> <h3><%= cat.name %></h3>
+<%= sanitize(cat.description) %>
+<div class="gender_line">
+<span class="gender"><%= cat.breed %> <%= sprintf(", Age: %d year(s), ", cat.age) %> <%= sprintf(" Gender: %s.", cat.gender) %></span>
+<%= button_to 'Add to Foster', line_items_path(cat_id: cat) %>
+</div>
+</div>
+<% end %>
