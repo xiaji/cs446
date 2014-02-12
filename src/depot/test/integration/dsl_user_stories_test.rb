@@ -1,11 +1,3 @@
-#---
-# Excerpted from "Agile Web Development with Rails",
-# published by The Pragmatic Bookshelf.
-# Copyrights apply to this code. It may not be used to create training material, 
-# courses, books, articles, and the like. Contact us if you are in doubt.
-# We make no guarantees that this code is fit for any purpose. 
-# Visit http://www.pragmaticprogrammer.com/titles/rails4 for more book information.
-#---
 require 'test_helper'
 
 class DslUserStoriesTest < ActionDispatch::IntegrationTest
@@ -24,21 +16,21 @@ class DslUserStoriesTest < ActionDispatch::IntegrationTest
       :email    => "mike@pragmaticstudio.com",
       :pay_type => "Credit card"
   }
-    
+
   def setup
     LineItem.delete_all
     Order.delete_all
     @ruby_book = products(:ruby)
     @rails_book = products(:two)
-  end 
-  
+  end
+
   # A user goes to the store index page. They select a product,
   # adding it to their cart. They then check out, filling in
   # their details on the checkout form. When they submit,
   # an order is created in the database containing
   # their information, along with a single line item
   # corresponding to the product they added to their cart.
-  
+
   def test_buying_a_product
     dave = regular_user
     dave.get "/"
@@ -62,19 +54,19 @@ class DslUserStoriesTest < ActionDispatch::IntegrationTest
         mike.checks_out MIKES_DETAILS
         check_for_order MIKES_DETAILS, @rails_book
   end
-  
+
   def regular_user
     open_session do |user|
       def user.is_viewing(page)
         assert_response :success
         assert_template page
       end
-    
+
       def user.buys_a(product)
         xml_http_request :post, '/line_items', :product_id => product.id
-        assert_response :success 
+        assert_response :success
       end
-    
+
       def user.has_a_cart_containing(*products)
         cart = Cart.find(session[:cart_id])
         assert_equal products.size, cart.line_items.size
@@ -82,7 +74,7 @@ class DslUserStoriesTest < ActionDispatch::IntegrationTest
           assert products.include?(item.product)
         end
       end
-    
+
       def user.checks_out(details)
         get "/orders/new"
         assert_response :success
@@ -99,18 +91,18 @@ class DslUserStoriesTest < ActionDispatch::IntegrationTest
         cart = Cart.find(session[:cart_id])
         assert_equal 0, cart.line_items.size
       end
-    end  
+    end
   end
-  
+
   def check_for_order(details, *products)
     order = Order.find_by_name(details[:name])
     assert_not_nil order
-    
+
     assert_equal details[:name],     order.name
     assert_equal details[:address],  order.address
     assert_equal details[:email],    order.email
     assert_equal details[:pay_type], order.pay_type
-    
+
     assert_equal products.size, order.line_items.size
     for line_item in order.line_items
       assert products.include?(line_item.product)
