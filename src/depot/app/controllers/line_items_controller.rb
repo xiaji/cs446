@@ -1,6 +1,5 @@
 class LineItemsController < ApplicationController
-    skip_before_filter :authorize, only: :create
-
+  skip_before_filter :authorize, only: :create
   # GET /line_items
   # GET /line_items.json
   def index
@@ -44,8 +43,11 @@ class LineItemsController < ApplicationController
   def create
     @cart = current_cart
     product = Product.find(params[:product_id])
-    @line_item = @cart.add_product(product.id)
+    @line_item = @cart.add_product(product: product)
+    # the following needed to be added... product was not stored in db
     @line_item.product = product
+    @line_item.product.title = product.title
+    @line_item.price = product.price
 
     respond_to do |format|
       if @line_item.save
@@ -88,4 +90,5 @@ class LineItemsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end

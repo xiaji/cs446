@@ -2,12 +2,10 @@
 <p id="notice"><%= notice %></p>
 <% end %>
 
-<h2>Your Cart</h2>
+<div class="cart_title">Your Cart</div>
 <table>
 <!-- START_HIGHLIGHT -->
-<!-- START_HIGHLIGHT -->
-  <%= render(@cart.line_items) %>
-<!-- END_HIGHLIGHT -->
+  <%= render @cart %>
 <!-- END_HIGHLIGHT -->
 
   <tr class="total_line">
@@ -19,3 +17,4 @@
 
 <%= button_to 'Empty cart', @cart, method: :delete,
     data: { confirm: 'Are you sure?' } %>
+

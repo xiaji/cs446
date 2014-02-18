@@ -1,12 +1,9 @@
 class OrdersController < ApplicationController
-    skip_before_filter :authorize, only: [:new, :create]
-
+  skip_before_filter :authorize, only: [:new, :create]
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.paginate page: params[:page], order: 'created_at desc',
-      per_page: 10
-
+    @orders = Order.paginate page: params[:page], order: 'created_at desc', per_page: 10
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @orders }
@@ -98,3 +95,4 @@ class OrdersController < ApplicationController
     end
   end
 end
+

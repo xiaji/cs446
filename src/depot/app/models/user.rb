@@ -11,4 +11,5 @@ class User < ActiveRecord::Base
         raise "Can't delete last user"
       end
     end
+
 end

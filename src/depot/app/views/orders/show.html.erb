@@ -1,25 +1,24 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
+  <strong>Name:</strong>
   <%= @order.name %>
 </p>
 
 <p>
-  <b>Address:</b>
+  <strong>Address:</strong>
   <%= @order.address %>
 </p>
 
 <p>
-  <b>Email:</b>
+  <strong>Email:</strong>
   <%= @order.email %>
 </p>
 
 <p>
-  <b>Pay type:</b>
+  <strong>Pay type:</strong>
   <%= @order.pay_type %>
 </p>
-
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
 <%= link_to 'Back', orders_path %>

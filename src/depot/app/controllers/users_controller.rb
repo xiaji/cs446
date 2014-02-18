@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class UsersController < InheritedResources::Base
   # GET /users
   # GET /users.json
   def index
@@ -84,9 +84,11 @@ class UsersController < ApplicationController
     rescue Exception => e
       flash[:notice] = e.message
     end
+
     respond_to do |format|
       format.html { redirect_to users_url }
       format.json { head :no_content }
     end
   end
+
 end

@@ -1,4 +1,3 @@
-<!-- START:head -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,38 +8,29 @@
 </head>
 <!-- END:head -->
 <body class="<%= controller.controller_name %>">
+<!-- START_HIGHLIGHT -->
   <div id="banner">
     <%= image_tag("logo.png") %>
-<!-- START_HIGHLIGHT -->
-    <%= @page_title || t('.title') %>
-<!-- END_HIGHLIGHT -->
+    <%= @page_title || "Pragmatic Bookshelf" %><!-- <label id="code.depot.e.title"/> -->
   </div>
   <div id="columns">
     <div id="side">
-      <!-- START:hidden_div -->
-      <% if @cart %>
-        <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
-          <%= render @cart %>
+      <div id="cart">
+        <% if @cart %>
+          <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
+            <%= render @cart %>
+          <% end %>
         <% end %>
-      <% end %>
-    <!-- END:hidden_div -->
+      </div>
 
       <ul>
-<!-- START_HIGHLIGHT -->
-        <li><a href="http://www...."><%= t('.home') %></a></li>
-<!-- END_HIGHLIGHT -->
-<!-- START_HIGHLIGHT -->
-        <li><a href="http://www..../faq"><%= t('.questions') %></a></li>
-<!-- END_HIGHLIGHT -->
-<!-- START_HIGHLIGHT -->
-        <li><a href="http://www..../news"><%= t('.news') %></a></li>
-<!-- END_HIGHLIGHT -->
-<!-- START_HIGHLIGHT -->
-        <li><a href="http://www..../contact"><%= t('.contact') %></a></li>
-<!-- END_HIGHLIGHT -->
+        <li><a href="http://www....">Home</a></li>
+        <li><a href="http://www..../faq">Questions</a></li>
+        <li><a href="http://www..../news">News</a></li>
+        <li><a href="http://www..../contact">Contact</a></li>
       </ul>
 
-      <% if session[:user_id] %>
+       <% if session[:user_id] %>
         <ul>
           <li><%= link_to 'Orders',   orders_path   %></li>
           <li><%= link_to 'Products', products_path %></li>
@@ -48,10 +38,12 @@
         </ul>
         <%= button_to 'Logout', logout_path, method: :delete   %>
       <% end %>
+
     </div>
     <div id="main">
-      <%= yield %>
+      <%= yield %><!-- <label id="code.depot.e.include"/> -->
     </div>
   </div>
 </body>
 </html>
+
