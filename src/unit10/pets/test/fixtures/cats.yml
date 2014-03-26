@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  breed: MyString
+  age: 1
+  gender: MyString
+  image_url: MyString
+  description: MyText
+
+two:
+  name: MyString
+  breed: MyString
+  age: 1
+  gender: MyString
+  image_url: MyString
+  description: MyText
+
+  #START:ruby
+
+ruby:
+  name:  cupcake
+  breed: Exotic Shorthair
+  age: 7
+  gender: F
+  image_url: cupcake.jpg
+  description:
+    Cupcake here! I am a super sweet kitty who needs a great home! Visit me today!
+
+#END:ruby
+

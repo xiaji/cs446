@@ -1,0 +1,15 @@
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+
+<h2>Your Foster Cat</h2>
+<ul>
+<% @foster.line_items.each do |item| %>
+<li><%= item.cat.name %></li>
+<li><%= item.cat.image_url %></li>
+<% end %>
+<div>
+    <p>you agree to provide a good home.</p>
+    <div>
+</ul>
+
