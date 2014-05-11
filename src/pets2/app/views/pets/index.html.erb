@@ -1,0 +1,39 @@
+<h1>Pet Management</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Species</th>
+      <th>Breed</th>
+      <th>Habits</th>
+      <th>Image Url</th>
+      <th>Status</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pets.each do |pet| %>
+    <tr>
+      <td><%= pet.name %></td>
+      <td><%= pet.age %></td>
+      <td><%= pet.species %></td>
+      <td><%= pet.breed %></td>
+      <td><%= truncate(strip_tags(pet.habits), length: 100) %></td>
+      <td><%= pet.image_url %></td>
+      <td><%= pet.status %></td>
+      <td><%= link_to 'Show', pet %></td>
+      <td><%= link_to 'Edit', edit_pet_path(pet) %></td>
+      <td><%= link_to 'Destroy', pet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Create New Pet', new_pet_path %>

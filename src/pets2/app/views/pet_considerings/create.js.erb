@@ -1,0 +1,5 @@
+if ($('#considering tr').length == 0) { $('#considering').show('blind', 1000); }
+
+$('#considering').html("<%= escape_javascript render(@considering) %>");
+
+$('#current').css({'background-color':'#ffffff'}).animate({'background-color':'#5f2580'}, 1000);

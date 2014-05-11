@@ -1,4 +1,28 @@
-Pets2::Application.routes.draw do
+Pets::Application.routes.draw do
+
+  resources :foster_parents do
+    collection do
+      get :view_all
+    end
+  end
+
+
+  resources :pet_considerings
+
+  resources :considerings
+
+  post "foster/agreement/:id", to: "foster#agreement", as: "foster_agreement"
+  post "foster/confirmation/:id", to: "foster#confirmation", as: "foster_confirmation"
+  get "animal_display/index", as: "animal_display"
+  get "animal_display/sort_by_name", as: "sort_by_name"
+  get "animal_display/sort_by_age", as: "sort_by_age"
+  get "animal_display/sort_by_name_reverse", as: "sort_by_name_reverse"
+  get "animal_display/sort_by_age_reverse", as: "sort_by_age_reverse"
+
+  resources :pets
+
+  root "animal_display#index"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Pinky
+  age: 1
+  species: Rat
+  breed: Generic Lab
+  habits: Helping The Brain with his plans
+  image_url: Pinky.png
+
+two:
+  name: The Brain
+  age: 2
+  species: Rat
+  breed: Generic Lab (Smart)
+  habits: Planning to take over the world
+  image_url: TheBrain.png

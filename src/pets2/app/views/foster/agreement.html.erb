@@ -1,0 +1,35 @@
+<h1>Foster Agreement</h1>
+<p>You have selected to foster the following pet:</p>
+<div class="entry">
+	<%= image_tag(@selected_pet.image_url) %>
+	<h3><%= @selected_pet.name %></h3>
+	<p>Age: <%= @selected_pet.age %></p>
+	<p>Species: <%= @selected_pet.species %></p>
+	<p>Breed: <%= @selected_pet.breed %></p>
+	<p>Habits: <%= truncate(@selected_pet.habits, length: 100) %></p>
+</div>
+<div class="agreement">
+	<p>Each one of the pets listed on this site are incredibly special to me.</p>
+	<p>By pressing agree, you agree to the following:</p>
+	<ol>
+		<li>
+			<%= @selected_pet.name %> will go to a good home, which includes:
+			<ul>
+				<li>No violence</li>
+				<li>Proper care given each day</li>
+				<li>Plently of interaction and affection to the pet, also known as 'lovins'</li>
+			</ul>
+		</li>
+		<li>
+			If you fail to provide the above criteria, the pet will be reclaimed, and the maxiumum extent of the law persued against you.
+		</li>
+	</ol>
+</div>
+<br />
+<br />
+<div class="acceptance">
+	<p>All that being said, do you still wish to accept?</p>
+	<% session[:selected_pet_id] = @selected_pet.id %>
+	<%= button_to "I Accept", new_foster_parent_path, method: :get %>
+	<%= link_to "I Do Not Accept", root_path %>
+</div>

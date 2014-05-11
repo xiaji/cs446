@@ -1,0 +1,6 @@
+<h2>You're considering these pets</h2>
+<table>
+	<%= render(considering.pet_considerings) %>
+</table>
+
+<%= button_to "Remove all pets", considering, method: :delete, data: { confirm: "Are you sure?" } %>
